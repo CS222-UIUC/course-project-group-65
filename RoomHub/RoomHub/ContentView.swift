@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+class AppViewModel: ObservedObject {
+    let auth = Auth.auth()
+    
+}
 
 struct ContentView: View {
     var body: some View {
