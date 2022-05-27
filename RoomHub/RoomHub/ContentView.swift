@@ -43,18 +43,38 @@ class AppViewModel: ObservableObject {
             }
         }
     }
+    
+    func signOut() {
+        try? auth.signOut();
+        
+        self.signedIn = false;
+    }
 }
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AppViewModel
-
+    
     
     var body: some View {
         NavigationView {
             if viewModel.signedIn {
-                Text("You are Signed in")
+                VStack {
+                    Text("You are Signed in")
+
+                    Button(action: {
+                        viewModel.signOut()
+                    }, label: {
+                        Text("Log Out")
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 50)
+                            .cornerRadius(8)
+                            .background(Color.purple)
+                    })
+                
+                }
+                
             } else {
-                LogInView()
+                StartView()
             }
         }
         .onAppear{
@@ -63,6 +83,38 @@ struct ContentView: View {
     }
 }
 
+struct StartView: View {
+    var body: some View {
+        VStack{
+            Text("Welcome to Room Hub")
+                .padding()
+            VStack{
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: LogInView()) {
+                        Text("Log In")
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 50)
+                            .cornerRadius(8)
+                            .background(Color.purple)
+                    }
+                })
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: SignUpView()) {
+                        Text("Create Account")
+                            .foregroundColor(Color.white)
+                            .frame(width: 200, height: 50)
+                            .cornerRadius(8)
+                            .background(Color.purple)
+                    }
+                })
+            }
+        }
+    }
+}
 struct LogInView: View {
     @State var email = ""
     @State var password = ""
@@ -72,33 +124,90 @@ struct LogInView: View {
     
     var body: some View {
         VStack {
-            TextField("Email Address", text: $email)
-                .padding()
-                .background(Color(.secondarySystemBackground))
-            SecureField("Password", text: $password)
-                .padding()
-                .background(Color(.secondarySystemBackground))
             
-            Button(action:{
+            VStack {
+                TextField("Email Address", text: $email)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                SecureField("Password", text: $password)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
                 
-                guard !email.isEmpty, !password.isEmpty else {
-                    return // email and/or password are empty -> tell user this
-                }
-                
-                viewModel.signIn(email: email, password: password)
-                
-            }, label: {
-                Text("Log In")
-                    .foregroundColor(Color.white)
-                    .frame(width: 200, height: 50)
-                    .cornerRadius(8)
-                    .background(Color.purple)
-            })
+                Button(action:{
+                    
+                    guard !email.isEmpty, !password.isEmpty else {
+                        return // email and/or password are empty -> tell user this
+                    }
+                    
+                    viewModel.signIn(email: email, password: password)
+                    
+                }, label: {
+                    Text("Log In")
+                        .foregroundColor(Color.white)
+                        .frame(width: 200, height: 50)
+                        .cornerRadius(8)
+                        .background(Color.purple)
+                })
+            }
+            
+            .padding()
+            
+            Spacer()
         }
-        .padding()
-        
-        Spacer()
         .navigationTitle("Log In")
+
+    }
+}
+
+struct SignUpView: View {
+    @State var email = ""
+    @State var password = ""
+    
+    @EnvironmentObject var viewModel: AppViewModel
+
+    
+    var body: some View {
+        VStack {
+            
+            VStack {
+                TextField("Email Address", text: $email)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                SecureField("Password", text: $password)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .padding()
+                    .background(Color(.secondarySystemBackground))
+                
+                Button(action:{
+                    
+                    guard !email.isEmpty, !password.isEmpty else {
+                        return // email and/or password are empty -> tell user this
+                    }
+                    
+                    viewModel.signUp(email: email, password: password)
+                    
+                }, label: {
+                    Text("Create Account")
+                        .foregroundColor(Color.white)
+                        .frame(width: 200, height: 50)
+                        .cornerRadius(8)
+                        .background(Color.purple)
+                })
+            }
+            
+            .padding()
+            
+            Spacer()
+        }
+        .navigationTitle("Create Account")
+
     }
 }
 
