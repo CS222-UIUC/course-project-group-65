@@ -157,6 +157,14 @@ struct LogInView: View {
             .padding()
             
             Spacer()
+            Button(action: {
+                // do nothing... yet
+            }, label: {
+                NavigationLink(destination: SignUpView()) {
+                    Text("Don't have an account? Sign up here.")
+                        .foregroundColor(Color.pink)
+                }
+            })
         }
         .navigationTitle("Log In")
 
