@@ -152,6 +152,7 @@ struct LogInView: View {
                         .cornerRadius(8)
                         .background(Color.purple)
                 })
+                
             }
             
             .padding()
@@ -209,6 +210,14 @@ struct SignUpView: View {
                         .background(Color.purple)
                 })
             }
+            Button(action: {
+                // do nothing... yet
+            }, label: {
+                NavigationLink(destination: SignUpView()) {
+                    Text("Already have an account? Sign in here")
+                        .foregroundColor(Color.blue)
+                }
+            })
             
             .padding()
             
