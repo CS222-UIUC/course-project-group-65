@@ -86,14 +86,17 @@ struct ContentView: View {
 struct StartView: View {
     var body: some View {
         VStack{
-            Text("Welcome to Room Hub")
-                .padding()
+            Image("Icon")
+                .resizable()
+                .frame(width: 100, height: 100)
+            Text("all your roomate needs in one pod")
+                .position(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.5)
             VStack{
                 Button(action: {
                     // do nothing... yet
                 }, label: {
-                    NavigationLink(destination: LogInView()) {
-                        Text("Log In")
+                    NavigationLink(destination: SignUpView()) {
+                        Text("Create Account")
                             .foregroundColor(Color.white)
                             .frame(width: 200, height: 50)
                             .cornerRadius(8)
@@ -103,8 +106,8 @@ struct StartView: View {
                 Button(action: {
                     // do nothing... yet
                 }, label: {
-                    NavigationLink(destination: SignUpView()) {
-                        Text("Create Account")
+                    NavigationLink(destination: LogInView()) {
+                        Text("Log In")
                             .foregroundColor(Color.white)
                             .frame(width: 200, height: 50)
                             .cornerRadius(8)
@@ -213,7 +216,7 @@ struct SignUpView: View {
             Button(action: {
                 // do nothing... yet
             }, label: {
-                NavigationLink(destination: SignUpView()) {
+                NavigationLink(destination: LogInView()) {
                     Text("Already have an account? Sign in here")
                         .foregroundColor(Color.blue)
                 }
