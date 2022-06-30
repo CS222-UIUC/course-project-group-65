@@ -85,37 +85,55 @@ struct ContentView: View {
 
 struct StartView: View {
     var body: some View {
-        VStack{
-            Image("Icon")
-                .resizable()
-                .frame(width: 100, height: 100)
-            Text("all your roomate needs in one pod")
-                .position(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.5)
+//        VStack {
+//            Image("Icon")
+//                .resizable()
+//                .frame(width: 100, height: 100)
+//                .padding()
             VStack{
-                Button(action: {
-                    // do nothing... yet
-                }, label: {
-                    NavigationLink(destination: SignUpView()) {
-                        Text("Create Account")
-                            .foregroundColor(Color.white)
-                            .frame(width: 200, height: 50)
-                            .cornerRadius(8)
-                            .background(Color.purple)
+                HStack() {
+                    VStack(alignment: .leading){
+                        Text("all your roomate")
+                            .font(.system(size: 50))
+                            .padding(.leading, 20)
+                        Text("needs in one")
+                            .font(.system(size: 50))
+                            .padding(.leading, 20)
+                        Text("pod")
+                            .font(.system(size: 50))
+                            .padding(.leading, 20)
                     }
-                })
-                Button(action: {
-                    // do nothing... yet
-                }, label: {
-                    NavigationLink(destination: LogInView()) {
-                        Text("Log In")
-                            .foregroundColor(Color.white)
-                            .frame(width: 200, height: 50)
-                            .cornerRadius(8)
-                            .background(Color.purple)
-                    }
-                })
+                }
+                Spacer()
+                VStack{
+                    Button(action: {
+                        // do nothing... yet
+                    }, label: {
+                        NavigationLink(destination: SignUpView()) {
+                            Text("Create Account")
+                                .font(.system(size: 25))
+                                .foregroundColor(Color.white)
+                                .frame(width: 250, height: 60)
+                                .cornerRadius(8)
+                                .background(Color.red)
+                        }
+                    })
+                    Button(action: {
+                        // do nothing... yet
+                    }, label: {
+                        NavigationLink(destination: LogInView()) {
+                            Text("Log In")
+                                .font(.system(size: 25))
+                                .foregroundColor(Color.white)
+                                .frame(width: 250, height: 60)
+                                .cornerRadius(8)
+                                .background(Color.red)
+                        }
+                    })
+                }
+                .padding(.bottom, 200)
             }
-        }
+//        }
     }
 }
 struct LogInView: View {
