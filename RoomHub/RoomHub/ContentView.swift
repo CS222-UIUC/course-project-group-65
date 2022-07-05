@@ -26,9 +26,9 @@ class AppViewModel: ObservableObject {
             // success
             DispatchQueue.main.async {
                 self?.signedIn = true
-
+                
             }
-
+            
         }
     }
     func signUp(email: String, password: String) {
@@ -38,7 +38,7 @@ class AppViewModel: ObservableObject {
                 return
             }
             DispatchQueue.main.async {
-
+                
                 self?.signedIn = true
             }
         }
@@ -60,7 +60,7 @@ struct ContentView: View {
             if viewModel.signedIn {
                 VStack {
                     Text("You are Signed in")
-
+                    
                     Button(action: {
                         viewModel.signOut()
                     }, label: {
@@ -70,7 +70,7 @@ struct ContentView: View {
                             .cornerRadius(8)
                             .background(Color.purple)
                     })
-                
+                    
                 }
                 
             } else {
@@ -85,79 +85,82 @@ struct ContentView: View {
 
 struct StartView: View {
     var body: some View {
-//        VStack {
-//            Image("Icon")
-//                .resizable()
-//                .frame(width: 100, height: 100)
-//                .padding()
-            VStack{
-                HStack() {
-                    VStack(alignment: .leading){
-                        Text("all your roomate")
-                            .font(.system(size: 50))
-                            .padding(.leading, 20)
-                        Text("needs in one")
-                            .font(.system(size: 50))
-                            .padding(.leading, 20)
-                        Text("pod")
-                            .font(.system(size: 50))
-                            .padding(.leading, 20)
-                    }
-                }
+        ZStack{
+            VStack(){
+                Text("all your\nroomate\nneeds\nin one pod.")
+                    .font(.system(size: 50, weight: .bold))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+                    .padding(.leading, 25)
+                    .foregroundColor(.white)
                 Spacer()
-                VStack{
-                    Button(action: {
-                        // do nothing... yet
-                    }, label: {
-                        NavigationLink(destination: SignUpView()) {
-                            Text("Create Account")
-                                .font(.system(size: 25))
-                                .foregroundColor(Color.white)
-                                .frame(width: 250, height: 60)
-                                .cornerRadius(8)
-                                .background(Color.red)
-                        }
-                    })
-                    Button(action: {
-                        // do nothing... yet
-                    }, label: {
-                        NavigationLink(destination: LogInView()) {
-                            Text("Log In")
-                                .font(.system(size: 25))
-                                .foregroundColor(Color.white)
-                                .frame(width: 250, height: 60)
-                                .cornerRadius(8)
-                                .background(Color.red)
-                        }
-                    })
-                }
-                .padding(.bottom, 200)
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: LogInView()) {
+                        Text("get started \(Image(systemName: "arrow.right"))")
+                            .font(.system(size: 25))
+                            .frame(maxWidth: .infinity ,alignment: .trailing)
+                            .padding(.trailing, 25)
+                            .imageScale(.small)
+                    }
+                })
+                .cornerRadius(25)
+                .padding(.bottom, 100)
             }
-//        }
+        }
+        .accentColor(.white)
+        .background(.purple)
     }
 }
+
 struct LogInView: View {
     @State var email = ""
     @State var password = ""
     
     @EnvironmentObject var viewModel: AppViewModel
-
+    
     
     var body: some View {
-        VStack {
-            
-            VStack {
-                TextField("Email Address", text: $email)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
+        ZStack {
+            VStack(spacing: 0) {
+                Text("log in")
+                    .font(.system(size: 50, weight: .bold))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+                    .padding(.leading, 25)
+                    .foregroundColor(.white)
+                Spacer()
+                VStack(spacing: 0){
+                    Text("email address")
+                        .font(.system(size: 25))
+                        .frame(maxWidth: .infinity ,alignment: .leading)
+                        .padding(.leading, 25)
+                        .foregroundColor(.white)
+                    TextField("", text: $email)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                        .padding()
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
+                        .foregroundColor(.white)
                     .padding()
-                    .background(Color(.secondarySystemBackground))
-                SecureField("Password", text: $password)
-                    .disableAutocorrection(true)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                
+                    Text("password")
+                        .font(.system(size: 25))
+                        .frame(maxWidth: .infinity ,alignment: .leading)
+                        .padding(.leading, 25)
+                        .padding(.bottom, 15)
+                        .foregroundColor(.white)
+                    SecureField("", text: $password)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                        .padding()
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
+                        .padding()
+                }
                 Button(action:{
                     
                     guard !email.isEmpty, !password.isEmpty else {
@@ -168,28 +171,28 @@ struct LogInView: View {
                     
                 }, label: {
                     Text("Log In")
-                        .foregroundColor(Color.white)
                         .frame(width: 200, height: 50)
-                        .cornerRadius(8)
-                        .background(Color.purple)
                 })
+                .cornerRadius(25)
                 
+                Spacer()
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: SignUpView()) {
+                        Text("first time? \(Image(systemName: "arrow.right"))")
+                            .font(.system(size: 25))
+                            .frame(maxWidth: .infinity ,alignment: .trailing)
+                            .padding(.trailing, 25)
+                            .imageScale(.small)
+                    }
+                })
+                .cornerRadius(25)
+                .padding(.bottom, 100)
             }
-            
-            .padding()
-            
-            Spacer()
-            Button(action: {
-                // do nothing... yet
-            }, label: {
-                NavigationLink(destination: SignUpView()) {
-                    Text("Don't have an account? Sign up here.")
-                        .foregroundColor(Color.pink)
-                }
-            })
         }
-        .navigationTitle("Log In")
-
+        .accentColor(.white)
+        .background(.purple)
     }
 }
 
@@ -198,7 +201,7 @@ struct SignUpView: View {
     @State var password = ""
     
     @EnvironmentObject var viewModel: AppViewModel
-
+    
     
     var body: some View {
         VStack {
@@ -245,7 +248,7 @@ struct SignUpView: View {
             Spacer()
         }
         .navigationTitle("Create Account")
-
+        
     }
 }
 
