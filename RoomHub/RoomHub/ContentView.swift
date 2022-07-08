@@ -154,10 +154,10 @@ struct LogInView: View {
                     SecureField("", text: $password)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-                        .padding()
+//                        .padding()
                         .overlay(
                                 RoundedRectangle(cornerRadius: 25)
-                                    .stroke(Color.white, lineWidth: 2)
+                                    .stroke(Color.white, lineWidth: 1)
                             )
                         .padding()
                 }
