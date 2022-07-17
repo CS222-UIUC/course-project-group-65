@@ -102,6 +102,11 @@ struct StartView: View {
                             .frame(maxWidth: .infinity ,alignment: .trailing)
                             .padding(.trailing, 25)
                             .imageScale(.small)
+                            .overlay(
+                                    RoundedRectangle(cornerRadius: 25)
+                                        .stroke(Color.white, lineWidth: 2)
+                                        .frame(width: .fit, alignment: .trailing)
+                                )
                     }
                 })
                 .cornerRadius(25)
@@ -154,7 +159,7 @@ struct LogInView: View {
                     SecureField("", text: $password)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-//                        .padding()
+                        .padding()
                         .overlay(
                                 RoundedRectangle(cornerRadius: 25)
                                     .stroke(Color.white, lineWidth: 1)
