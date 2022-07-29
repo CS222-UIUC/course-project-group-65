@@ -11,7 +11,6 @@ import FirebaseAuth
 
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()
-    
     @Published var signedIn = false
     
     var isSignedIn: Bool {
@@ -64,14 +63,26 @@ struct ContentView: View {
                     Button(action: {
                         viewModel.signOut()
                     }, label: {
-                        Text("Log Out")
+                        Text("log out")
                             .foregroundColor(Color.white)
                             .frame(width: 200, height: 50)
                             .cornerRadius(8)
                             .background(Color.purple)
                     })
+                    Button(action: {
+                        // do nothing... yet
+                    }, label: {
+                        NavigationLink(destination: LandingPageView()) {
+                            Text("continue")
+                                .foregroundColor(Color.white)
+                                .frame(width: 200, height: 50)
+                                .cornerRadius(8)
+                                .background(Color.purple)
+                        }
+                    })
                     
                 }
+                
                 
             } else {
                 StartView()
@@ -82,7 +93,84 @@ struct ContentView: View {
         }
     }
 }
+struct LandingPageView: View {
+//    @EnvironmentObject var viewModel: AppViewModel
+    var body: some View {
+        VStack() {
+            VStack(){
+                Text("start fresh.")
+                    .font(.system(size: 50, weight: .bold))
+                    .frame(maxWidth: .infinity ,alignment: .leading)
+                    .padding(.leading, 25)
+                    .foregroundColor(.red)
+//                    Spacer()
+              
+            }
+            .padding(.bottom, 25)
+            HStack(){
+//                Color.red
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: LogInView()) {
+                        Text("create a room")
+                            .font(.system(size: 20, weight: .bold))
+                            .frame(maxWidth: .infinity ,alignment: .leading)
+                            .padding(.leading, 40)
+                            .foregroundColor(.black)
+                            .hoverEffect(.lift)
+                    }
+                    .padding(.bottom, 10)
+                    .padding(.top, 10)
+                    .background(.thickMaterial)
+                    .cornerRadius(25)
 
+                })
+                Button(action: {
+                    // do nothing... yet
+                }, label: {
+                    NavigationLink(destination: LogInView()) {
+                        Text("join a room")
+                            .font(.system(size: 20, weight: .bold))
+                            .frame(maxWidth: .infinity ,alignment: .trailing)
+                            .padding(.trailing, 40)
+                            .foregroundColor(.black)
+                    }
+                    .padding(.bottom, 10)
+                    .padding(.top, 10)
+                    .background(.thickMaterial)
+                    .frame(alignment: .center)
+                    .cornerRadius(25)
+
+                })
+            }
+            Spacer()
+            Text("create a room to access your home management features!")
+                .foregroundColor(.black)
+            Spacer()
+            Button(action: {
+                // do nothing... yet
+            }, label: {
+                NavigationLink(destination: LogInView()) {
+                    Text("create a room")
+                        .font(.system(size: 30, weight: .bold))
+//                        .frame(maxWidth: .infinity ,alignment: .trailing)
+//                        .padding(.trailing, 40)
+                        .foregroundColor(.red)
+                }
+                .padding(.bottom, 10)
+                .padding(.top, 10)
+                .background(.thickMaterial)
+                .frame(alignment: .center)
+                .cornerRadius(25)
+
+            })
+            Spacer()
+        }
+        //UIColor(red:0xD4, green:0xC3, blue:0x94, alpha: 0.5)
+        //FFF8F8
+    }
+}
 struct StartView: View {
     var body: some View {
         ZStack{
@@ -105,7 +193,7 @@ struct StartView: View {
                             .overlay(
                                     RoundedRectangle(cornerRadius: 25)
                                         .stroke(Color.white, lineWidth: 2)
-                                        .frame(width: .fit, alignment: .trailing)
+                                        .frame(width: 100, alignment: .trailing)
                                 )
                     }
                 })
@@ -256,8 +344,6 @@ struct SignUpView: View {
         
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
