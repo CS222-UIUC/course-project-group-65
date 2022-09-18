@@ -1,0 +1,10 @@
+
+
+# Environment Vars:
+.env
+
+# pls ignore this:
+test.py
+
+# pycache bc:
+__pycache__
