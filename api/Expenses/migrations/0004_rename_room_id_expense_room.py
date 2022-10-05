@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Expenses', '0003_expense_room_id_alter_expense_category_and_more'),
+        ("Expenses", "0003_expense_room_id_alter_expense_category_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='expense',
-            old_name='room_id',
-            new_name='room',
+            model_name="expense",
+            old_name="room_id",
+            new_name="room",
         ),
     ]

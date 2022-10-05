@@ -11,28 +11,22 @@ class ChoreSerializer(serializers.ModelSerializer):
     # Creates new item in database
     def create(self, data):
         return Chore.objects.create(
-            name = data.get('name'),
-            completed = data.get('completed'),
-            weight = data.get('weight'),
-            room = data.get('room')
+            name=data.get("name"),
+            completed=data.get("completed"),
+            weight=data.get("weight"),
+            room=data.get("room"),
         )
-    
+
     # Updates item in database
     def update(self, instance, data):
-        instance.name = data.get('name', instance.name)
-        instance.completed = data.get('completed', instance.completed)
-        instance.weight = data.get('weight', instance.weight)
-        instance.room = data.get('room', instance.room)
+        instance.name = data.get("name", instance.name)
+        instance.completed = data.get("completed", instance.completed)
+        instance.weight = data.get("weight", instance.weight)
+        instance.room = data.get("room", instance.room)
 
         instance.save()
         return instance
 
     class Meta:
         model = Chore
-        fields = (
-            'id',
-            'name',
-            'completed',
-            'weight',
-            'room'
-        )
+        fields = ("id", "name", "completed", "weight", "room", "user")

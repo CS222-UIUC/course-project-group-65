@@ -41,14 +41,7 @@ Run `python manage.py runserver` or `python3 manage.py runserver` in the outer s
 
 ## Models
 	
-class User(models.Model):
-    name = models.CharField(max_length=45)
-    nickname = models.CharField(max_length=45)
-    email = models.CharField(max_length=90)
-    available = models.CharField(max_length=45)
-    expenses_amt = models.FloatField()
-    room_id = models.ForeignKey('Rooms.room', on_delete=models.SET_DEFAULT, default=0) # connects to room table -> foreign key
-    chore_weight = models.IntegerField()
+
 
 [^note]: depending on some further research and how big the programs will be we might have separate "apps" for expenses, chores, etc. but idk rn so im keeping it all in one for rn.
 

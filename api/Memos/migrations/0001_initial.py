@@ -9,17 +9,32 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('Rooms', '0001_initial'),
+        ("Rooms", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Memo',
+            name="Memo",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField()),
-                ('editable', models.BooleanField()),
-                ('room', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='Rooms.room')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.TextField()),
+                ("editable", models.BooleanField()),
+                (
+                    "room",
+                    models.ForeignKey(
+                        default=1,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="Rooms.room",
+                    ),
+                ),
             ],
         ),
     ]
