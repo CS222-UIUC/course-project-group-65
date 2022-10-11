@@ -16,3 +16,16 @@ def test_get_users(client):
 
     assert response.status_code == 200
     assert response.data == expected
+
+'''
+{
+    "name": "Bob Bob",
+    "nickname": "bo",
+    "email": "bob@bob.com",
+    "available": 0,
+    "expenses_amt": 0,
+    "room_admin": 0,
+    "room": 5,
+    "chore weight": 1
+}
+'''

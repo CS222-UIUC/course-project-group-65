@@ -16,3 +16,15 @@ def test_get_rooms(client):
 
     assert response.status_code == 200
     assert response.data == expected
+
+
+'''
+{
+    "name": "test room",
+    "num_members": 4,
+    "chore_cycle_len": 7,
+    "set_up": 0
+}
+
+
+'''
