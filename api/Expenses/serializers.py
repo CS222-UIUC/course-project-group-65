@@ -14,47 +14,32 @@ class ExpenseSerializer(serializers.ModelSerializer):
     # Creates new item in database
     def create(self, data):
         return Expense.objects.create(
-            name = data.get('name'),
-            amount = data.get('amount'),
-            paid = data.get('paid'),
-            date = data.get('date'),
-            category = data.get('category'),
-            room = data.get('room')
-
+            name=data.get("name"),
+            amount=data.get("amount"),
+            paid=data.get("paid"),
+            date=data.get("date"),
+            category=data.get("category"),
+            room=data.get("room"),
         )
-    
+
     # Updates item in database
     def update(self, instance, data):
-        instance.name = data.get('name', instance.name)
-        instance.amount = data.get('amount', instance.amount)
-        instance.paid = data.get('paid', instance.paid)
-        instance.date = data.get('date', instance.date)
-        instance.category = data.get('category', instance.category)
-        instance.room = data.get('room', instance.room)
+        instance.name = data.get("name", instance.name)
+        instance.amount = data.get("amount", instance.amount)
+        instance.paid = data.get("paid", instance.paid)
+        instance.date = data.get("date", instance.date)
+        instance.category = data.get("category", instance.category)
+        instance.room = data.get("room", instance.room)
 
         instance.save()
         return instance
 
     class Meta:
         model = Expense
-        fields = (
-            'id',
-            'name',
-            'amount',
-            'paid',
-            'date',
-            'category',
-            'room'
-        )
-
+        fields = ("id", "name", "amount", "paid", "date", "category", "room", "owner")
 
 
 class UserExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserExpense
-        fields = [
-            'id',
-            'expense',
-            'splitCost',
-            'paid'
-        ]
+        fields = ["id", "expense", "splitCost", "paid", "user"]

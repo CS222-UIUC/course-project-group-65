@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ChoresConfig(AppConfig):
+class UsersConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "Chores"
+    name = "Users"

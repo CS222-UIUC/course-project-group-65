@@ -12,18 +12,18 @@ class RoomSerializer(serializers.ModelSerializer):
     # Creates new item in database
     def create(self, data):
         return Room.objects.create(
-            name = data.get('name'),
-            num_members = data.get('num_members'),
-            chore_cycle_len = data.get('chore_cycle_len'),
-            set_up = data.get('set_up') 
+            name=data.get("name"),
+            num_members=data.get("num_members"),
+            chore_cycle_len=data.get("chore_cycle_len"),
+            set_up=data.get("set_up"),
         )
-    
+
     # Updates item in database
     def update(self, instance, data):
-        instance.name = data.get('name', instance.name)
-        instance.num_members = data.get('num_members', instance.num_members)
-        instance.chore_cycle_len = data.get('chore_cycle_len', instance.chore_cycle_len)
-        instance.set_up = data.get('set_up', instance.set_up)
+        instance.name = data.get("name", instance.name)
+        instance.num_members = data.get("num_members", instance.num_members)
+        instance.chore_cycle_len = data.get("chore_cycle_len", instance.chore_cycle_len)
+        instance.set_up = data.get("set_up", instance.set_up)
 
         instance.save()
         return instance
@@ -31,9 +31,9 @@ class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
         fields = (
-            'id',
-            'name',
-            'num_members',
-            'chore_cycle_len',
-            'set_up'
+            "id",
+            "name",
+            "num_members",
+            "chore_cycle_len",
+            "set_up",
         )

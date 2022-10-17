@@ -3,8 +3,11 @@
 # Environment Vars:
 .env
 
-# pls ignore this:
-test.py
-
 # pycache bc:
 __pycache__
+
+# pytest cache:
+.pytest_cache
+
+# ds_store:
+.DS_Store

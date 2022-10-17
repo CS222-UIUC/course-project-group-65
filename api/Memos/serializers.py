@@ -11,26 +11,18 @@ class MemoSerializer(serializers.ModelSerializer):
     # Creates new item in database
     def create(self, data):
         return Memo.objects.create(
-            text = data.get('text'),
-            editable = data.get('editable'),
-            room = data.get('room') 
-
+            text=data.get("text"), editable=data.get("editable"), room=data.get("room")
         )
-    
+
     # Updates item in database
     def update(self, instance, data):
-        instance.text = data.get('text', instance.text)
-        instance.editable = data.get('editable', instance.editable)
-        instance.room = data.get('room', instance.room)
+        instance.text = data.get("text", instance.text)
+        instance.editable = data.get("editable", instance.editable)
+        instance.room = data.get("room", instance.room)
 
         instance.save()
         return instance
 
     class Meta:
         model = Memo
-        fields = (
-            'id',
-            'text',
-            'editable',
-            'room',
-        )
+        fields = ("id", "text", "editable", "room", "user")

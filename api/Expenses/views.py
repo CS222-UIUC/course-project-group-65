@@ -6,10 +6,11 @@ from .models import UserExpense
 
 # Create your views here.
 
-# GET (all) and POST 
+# GET (all) and POST
 class ExpenseList(generics.ListCreateAPIView):
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
+
 
 # GET (one), PUT, and DELETE
 class ExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -17,18 +18,19 @@ class ExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ExpenseSerializer
 
 
-# GET (all) and POST 
+# GET (all) and POST
 class UserExpenseList(generics.ListCreateAPIView):
     queryset = UserExpense.objects.all()
     serializer_class = UserExpenseSerializer
-# GET (all) and POST 
+
+
+# GET (all) and POST
 class UserExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserExpense.objects.all()
     serializer_class = UserExpenseSerializer
 
 
-
-'''
+"""
 When creating a new expense in the UI, we're gonna get the info of who added it and who its assign to.
 So, when requesting to the api, we're gonna send a post request with the data of the new expense, and then another post request
 What will this other post request look like?
@@ -47,7 +49,7 @@ Then, if that specific user hits the paid button (and its approved), then
 another put requdest to change this info to paid.
 Then, another request from the frontend if the info
 
-'''
+"""
 
 
 # This is an older and more handholdy way of doing the CRUD ops in django
@@ -63,13 +65,13 @@ Then, another request from the frontend if the info
 #                 expense = Expense.objects.get(id=id) # find it
 #             except Expense.DoesNotExist:
 #                 return Response({"errors": "expense with that id does not exist"}, status=400)
-            
+
 #             serializer = ExpenseSerializer(expense) # read it
 #         # Otherwise, list all expenses
 #         else:
 #             expenses = Expense.objects.all() # find all
 #             serializer = ExpenseSerializer(expenses, many=True) # read all
-        
+
 #         # send response with expense(s)
 #         return Response({'data': serializer.data}, status=201)
 
@@ -92,7 +94,7 @@ Then, another request from the frontend if the info
 
 #         # Error
 #         return Response(create_serializer.errors, status=400)
-    
+
 #     # [PUT] Method
 #     def put(self, request, id=None):
 #         # check if expense w/ id exists
@@ -109,7 +111,7 @@ Then, another request from the frontend if the info
 #             expense = update_serializer.save()
 #             read_serializer = ExpenseSerializer(expense)
 #             return Response(read_serializer.data, status=200)
-        
+
 #         # error
 #         return Response(read_serializer.errors, status=400)
 
@@ -121,7 +123,7 @@ Then, another request from the frontend if the info
 #             expense = Expense.objects.get(id=id)
 #         except Expense.DoesNotExist:
 #             return(Response({"error": "expense with that id does not exist"}, status=400))
-        
+
 #         # delete it.
 #         expense.delete()
 
