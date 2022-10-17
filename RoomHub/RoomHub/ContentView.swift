@@ -95,6 +95,7 @@ struct ContentView: View {
 }
 struct LandingPageView: View {
 //    @EnvironmentObject var viewModel: AppViewModel
+    @State var joinRoom = false
     var body: some View {
         VStack() {
             VStack(){
@@ -109,8 +110,9 @@ struct LandingPageView: View {
             .padding(.bottom, 25)
             HStack(){
 //                Color.red
-                Button(action: {
-                    // do nothing... yet
+                Button(action:{
+                    joinRoom = false
+                    NSLog(String(joinRoom))
                 }, label: {
                     NavigationLink(destination: LogInView()) {
                         Text("create a room")
@@ -127,7 +129,8 @@ struct LandingPageView: View {
 
                 })
                 Button(action: {
-                    // do nothing... yet
+                    joinRoom = true
+                    NSLog(String(joinRoom))
                 }, label: {
                     NavigationLink(destination: LogInView()) {
                         Text("join a room")
@@ -153,9 +156,10 @@ struct LandingPageView: View {
             }, label: {
                 NavigationLink(destination: LogInView()) {
                     Text("create a room")
-                        .font(.system(size: 30, weight: .bold))
+                        .font(.system(size: 20, weight: .bold))
 //                        .frame(maxWidth: .infinity ,alignment: .trailing)
-//                        .padding(.trailing, 40)
+                        .padding(.trailing, 15)
+                        .padding(.leading, 15)
                         .foregroundColor(.red)
                 }
                 .padding(.bottom, 10)
@@ -179,6 +183,7 @@ struct StartView: View {
                     .font(.system(size: 50, weight: .bold))
                     .frame(maxWidth: .infinity ,alignment: .leading)
                     .padding(.leading, 25)
+                    .padding(.top, 20)
                     .foregroundColor(.white)
                 Spacer()
                 Button(action: {
@@ -187,13 +192,14 @@ struct StartView: View {
                     NavigationLink(destination: LogInView()) {
                         Text("get started \(Image(systemName: "arrow.right"))")
                             .font(.system(size: 25))
-                            .frame(maxWidth: .infinity ,alignment: .trailing)
-                            .padding(.trailing, 25)
+                            .frame(maxWidth: .infinity ,alignment: .bottom)
+                            .padding(.bottom, 10)
+                            .padding(.top, 10)
                             .imageScale(.small)
                             .overlay(
                                     RoundedRectangle(cornerRadius: 25)
-                                        .stroke(Color.white, lineWidth: 2)
-                                        .frame(width: 100, alignment: .trailing)
+                                        .stroke(Color.white, lineWidth: 3)
+                                        .frame(width: 200, alignment: .bottom)
                                 )
                     }
                 })
@@ -202,7 +208,7 @@ struct StartView: View {
             }
         }
         .accentColor(.white)
-        .background(.purple)
+        .background(.blue)
     }
 }
 
@@ -242,20 +248,20 @@ struct LogInView: View {
                         .font(.system(size: 25))
                         .frame(maxWidth: .infinity ,alignment: .leading)
                         .padding(.leading, 25)
-                        .padding(.bottom, 15)
                         .foregroundColor(.white)
-                    SecureField("", text: $password)
+                    TextField("", text: $password)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .overlay(
                                 RoundedRectangle(cornerRadius: 25)
-                                    .stroke(Color.white, lineWidth: 1)
+                                    .stroke(Color.white, lineWidth: 2)
                             )
-                        .padding()
+                        .foregroundColor(.white)
+                    .padding()
+                    .padding(.bottom, 50)
                 }
                 Button(action:{
-                    
                     guard !email.isEmpty, !password.isEmpty else {
                         return // email and/or password are empty -> tell user this
                     }
@@ -264,7 +270,16 @@ struct LogInView: View {
                     
                 }, label: {
                     Text("Log In")
-                        .frame(width: 200, height: 50)
+                        .font(.system(size: 25))
+                        .frame(maxWidth: .infinity ,alignment: .bottom)
+                        .padding(.bottom, 10)
+                        .padding(.top, 10)
+                        .imageScale(.small)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 25)
+                                    .stroke(Color.white, lineWidth: 3)
+                                    .frame(width: 170, alignment: .bottom)
+                            )
                 })
                 .cornerRadius(25)
                 
@@ -285,7 +300,7 @@ struct LogInView: View {
             }
         }
         .accentColor(.white)
-        .background(.purple)
+        .background(.blue)
     }
 }
 
@@ -324,7 +339,7 @@ struct SignUpView: View {
                         .foregroundColor(Color.white)
                         .frame(width: 200, height: 50)
                         .cornerRadius(8)
-                        .background(Color.purple)
+                        .background(Color.red)
                 })
             }
             Button(action: {
