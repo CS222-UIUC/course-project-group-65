@@ -8,6 +8,7 @@ from .models import UserExpense
 
 # GET (all) and POST
 class ExpenseList(generics.ListCreateAPIView):
+    print(generics.ListCreateAPIView)
     queryset = Expense.objects.all()
     serializer_class = ExpenseSerializer
 
@@ -29,6 +30,11 @@ class UserExpenseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserExpense.objects.all()
     serializer_class = UserExpenseSerializer
 
+
+def getUsersFromExpense(id):
+
+    UserExpenseExpense.objects.raw(f'SELECT * FROM Expense_userexpense where id={id}')
+    return id
 
 """
 When creating a new expense in the UI, we're gonna get the info of who added it and who its assign to.
