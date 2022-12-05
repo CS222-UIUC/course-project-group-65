@@ -16,7 +16,6 @@ class Expense(models.Model):
         "Users.user", on_delete=models.CASCADE, default=1
     )  # connects to users table -> foreign key
 
-
 # owners not in user expenses
 class UserExpense(models.Model):
     user = models.ForeignKey(

@@ -17,6 +17,17 @@ def test_get_users(client):
     assert response.status_code == 200
     assert response.data == expected
 
+@pytest.mark.django_db
+def test_post_users(client):
+    url = reverse("user-list")
+    response = client.post(url)
+
+    rooms = User.objects.all()
+    expected = UserSerializer(rooms, many=True).data
+
+    assert response.status_code == 200
+    assert response.data == expected
+
 '''
 {
     "name": "Bob Bob",
