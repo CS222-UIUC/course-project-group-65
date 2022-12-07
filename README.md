@@ -19,8 +19,8 @@ Migrate up to database: `python3 manage.py migrate`
 
 # Group Member Roles
 Backend: 
-  Saloni- connecting backend and frontend
-  Devanshi- algorithmic development and testing
+  Saloni- connecting backend and frontend;
+  Devanshi- algorithmic development and testing;
 Frontend: 
-  Nikhila- UI development of login,landing,home pages
-  Deeya- stylized elements for expenses, chores, and memo pages
+  Nikhila- UI development of login,landing,home pages;
+  Deeya- stylized elements for expenses, chores, and memo pages;
