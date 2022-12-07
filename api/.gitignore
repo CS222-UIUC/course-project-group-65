@@ -1,0 +1,13 @@
+
+
+# Environment Vars:
+.env
+
+# pycache bc:
+__pycache__
+
+# pytest cache:
+.pytest_cache
+
+# ds_store:
+.DS_Store

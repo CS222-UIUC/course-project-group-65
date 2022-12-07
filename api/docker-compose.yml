@@ -1,0 +1,21 @@
+version: '3' # sets the version of python
+services:
+  db:
+    image: mysql:8 # this is where we get the official mysql
+    platform: linux/amd64 # because m1 chip is annoying
+    ports:
+      - "13306:3306" # this is where the database is run
+    environment: # env variables
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
