@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145C763129405FA50042EFC0 /* Chores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C763029405FA50042EFC0 /* Chores.swift */; };
+		145C763329405FBF0042EFC0 /* Memos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145C763229405FBF0042EFC0 /* Memos.swift */; };
 		14CA343728A5692900780B00 /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CA343628A5692900780B00 /* Expenses.swift */; };
 		14F6807B2839A32500CD6D0F /* RoomHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6807A2839A32500CD6D0F /* RoomHubApp.swift */; };
 		14F6807D2839A32500CD6D0F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14F6807C2839A32500CD6D0F /* ContentView.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		145C763029405FA50042EFC0 /* Chores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chores.swift; sourceTree = "<group>"; };
+		145C763229405FBF0042EFC0 /* Memos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memos.swift; sourceTree = "<group>"; };
 		14CA343628A5692900780B00 /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 		14F680772839A32500CD6D0F /* RoomHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F6807A2839A32500CD6D0F /* RoomHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomHubApp.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				14CA343628A5692900780B00 /* Expenses.swift */,
+				145C763029405FA50042EFC0 /* Chores.swift */,
+				145C763229405FBF0042EFC0 /* Memos.swift */,
 			);
 			path = Server;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14CA343728A5692900780B00 /* Expenses.swift in Sources */,
+				145C763329405FBF0042EFC0 /* Memos.swift in Sources */,
 				14F6807D2839A32500CD6D0F /* ContentView.swift in Sources */,
 				14F6807B2839A32500CD6D0F /* RoomHubApp.swift in Sources */,
+				145C763129405FA50042EFC0 /* Chores.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
